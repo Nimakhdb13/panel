@@ -3,26 +3,32 @@
     {{ title }}
   </v-card-title>
 
-  <v-sheet width="300" height="420" class="mx-auto">
+  <v-sheet width="300" height="460" class="mx-auto bg-op-0">
     <v-form v-model="detail.isFormValid" class="mt-5" @submit.prevent>
       <v-text-field
-        v-for="field in this.detail.fields"
+        v-for="field in detail.fields"
         :key="field.title"
-        variant="underlined"
-        class="mx-4"
+        variant="outlined"
+        class="mx-4 my-2"
+        density="compact"
+        color="green"
+        :prepend-inner-icon="field.icon"
+        :append-inner-icon="
+          field.title == 'Password'
+            ? field.type == 'text'
+              ? 'fa-regular fa-eye-slash fa-xl'
+              : 'fa-regular fa-eye'
+            : ''
+        "
+        @click:append-inner="
+          field.type = field.type == 'password' ? 'text' : 'password'
+        "
         :label="field.title"
         v-model="field.value"
         :type="field.type"
+        @keydown="checkPhoneIsNumber"
         :rules="rules[field.rules]"
       >
-        <v-btn
-          variant="plain"
-          @click="field.type = field.type == 'password' ? 'text' : 'password'"
-          v-if="field.title == 'Password'"
-          class="right"
-          size="small"
-          icon="fas fa-eye"
-        ></v-btn>
       </v-text-field>
       <div class="d-flex align-center justify-center">
         <span class="text-caption mr-3">{{ detail.spanText }}</span>
@@ -36,8 +42,8 @@
       </div>
       <v-btn
         class="fix-b"
-        :loading="this.loading"
-        @click="this.submit"
+        :loading="loading"
+        @click="submit"
         type="submit"
         block
         color="success"
@@ -47,19 +53,19 @@
   </v-sheet>
 </template>
 
-<script>
-import rules from "../assets/rules";
+<script lang="ts">
+import rules from "../../assets/rules";
 
 export default {
   props: ["title"],
+  emits: ["flip"],
   data() {
     return {
-      rules: {},
-      detail: {},
+      rules: {} as any,
+      detail: {} as any,
       cardSides: [
         {
           title: "SignUp",
-          divClass: "flip-card-front",
           isFormValid: false,
           fields: [
             {
@@ -67,24 +73,35 @@ export default {
               value: "",
               type: "text",
               rules: "required",
+              icon: "fa-solid fa-f",
             },
             {
               title: "LastName",
               value: "",
               type: "text",
               rules: "required",
+              icon: "fa-solid fa-l",
             },
             {
               title: "UserName",
               value: "",
               type: "text",
               rules: "username",
+              icon: "fa-solid fa-user",
+            },
+            {
+              title: "Phone Number",
+              value: "",
+              type: "tel",
+              rules: "phone",
+              icon: "fa-solid fa-phone",
             },
             {
               title: "Password",
               value: "",
               type: "password",
               rules: "password",
+              icon: "fa-solid fa-key",
             },
           ],
           spanText: "do you have an account?",
@@ -93,7 +110,6 @@ export default {
         },
         {
           title: "LogIn",
-          divClass: "flip-card-back",
           isFormValid: false,
           fields: [
             {
@@ -101,12 +117,14 @@ export default {
               value: "",
               type: "text",
               rules: "required",
+              icon: "fa-solid fa-user",
             },
             {
               title: "Password",
               value: "",
               type: "password",
               rules: "required",
+              icon: "fa-solid fa-key",
             },
           ],
           spanText: "don't you have an account?",
@@ -125,6 +143,20 @@ export default {
         for (let item of this.detail.fields) console.log(item.value);
       }
     },
+    checkPhoneIsNumber(event: any) {
+      if (event.target.type == "tel") {
+        var charCode = event.which ? event.which : event.keyCode;
+        if (
+          charCode > 31 &&
+          (charCode < 48 || charCode > 57) &&
+          charCode !== 46
+        ) {
+          event.preventDefault();
+        } else {
+          return true;
+        }
+      }
+    },
   },
   mounted() {
     this.rules = rules;
@@ -134,4 +166,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-icon--size-default {
+  font-size: 20px !important;
+}
+</style>
