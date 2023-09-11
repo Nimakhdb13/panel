@@ -68,20 +68,20 @@ export default {
           title: "SignUp",
           isFormValid: false,
           fields: [
-            {
-              title: "FirstName",
-              value: "",
-              type: "text",
-              rules: "required",
-              icon: "fa-solid fa-f",
-            },
-            {
-              title: "LastName",
-              value: "",
-              type: "text",
-              rules: "required",
-              icon: "fa-solid fa-l",
-            },
+            // {
+            //   title: "FirstName",
+            //   value: "",
+            //   type: "text",
+            //   rules: "required",
+            //   icon: "fa-solid fa-f",
+            // },
+            // {
+            //   title: "LastName",
+            //   value: "",
+            //   type: "text",
+            //   rules: "required",
+            //   icon: "fa-solid fa-l",
+            // },
             {
               title: "UserName",
               value: "",
