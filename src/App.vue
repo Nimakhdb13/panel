@@ -1,16 +1,14 @@
 <template>
-  <div class="d-flex align-center justify-center f-h-p f-w">
-    <flipper-card></flipper-card>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script lang="ts">
-import FlipperCard from './components/signin/flipperCard.vue';
+import { BaseApiService } from "./api/baseApi";
 export default {
-  components: { FlipperCard },
+  mounted() {
+    const api = new BaseApiService();
+  },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

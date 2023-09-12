@@ -2,7 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
-// import router from './router'
+import router from './router'
 
 import 'vuetify/styles'
 import '@fortawesome/fontawesome-free/css/all.css' // Ensure your project is capable of handling css files
@@ -26,6 +26,6 @@ const vuetify = createVuetify({
 
 const app = createApp(App)
 
-// app.use(router)
+app.use(router)
 
 app.use(vuetify).mount('#app')
