@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { BaseApiService } from "./api/baseApi";
+import { BaseApiService } from "./plugins/axios";
 export default {
   mounted() {
     const api = new BaseApiService();
