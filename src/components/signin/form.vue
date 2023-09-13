@@ -3,13 +3,13 @@
     {{ title }}
   </v-card-title>
 
-  <v-sheet width="300" height="460" class="mx-auto bg-op-0">
+  <v-sheet width="300" height="400" class="mx-auto bg-op-0">
     <v-form v-model="detail.isFormValid" class="mt-5" @submit.prevent>
       <v-text-field
         v-for="field in detail.fields"
         :key="field.title"
         variant="outlined"
-        class="mx-4 my-2"
+        class="mx-4 my-3"
         density="compact"
         color="green"
         :prepend-inner-icon="field.icon"
@@ -68,26 +68,19 @@ export default {
           title: "SignUp",
           isFormValid: false,
           fields: [
-            // {
-            //   title: "FirstName",
-            //   value: "",
-            //   type: "text",
-            //   rules: "required",
-            //   icon: "fa-solid fa-f",
-            // },
-            // {
-            //   title: "LastName",
-            //   value: "",
-            //   type: "text",
-            //   rules: "required",
-            //   icon: "fa-solid fa-l",
-            // },
             {
               title: "UserName",
               value: "",
               type: "text",
               rules: "username",
               icon: "fa-solid fa-user",
+            },
+            {
+              title: "Email",
+              value: "",
+              type: "text",
+              rules: "email",
+              icon: "fa-solid fa-envelope",
             },
             {
               title: "Phone Number",
