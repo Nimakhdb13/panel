@@ -16,31 +16,24 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { ref } from "vue";
 import SignInForm from "./form.vue";
-export default {
-components: { SignInForm },
-  data() {
-    return {
-      flipClass: "",
-    };
-  },
-  methods: {
-    flip(mode: string) {
-      if (mode === "signup") {
-        this.flipClass = "flip-card-first";
-        setTimeout(() => {
-          this.flipClass = "";
-        }, 800);
-      } else {
-        this.flipClass = "flip-card-flipped-first";
-        setTimeout(() => {
-          this.flipClass = "flip-card-flipped";
-        }, 800);
-      }
-    },
-  },
-};
+
+let flipClass = ref("");
+function flip(mode: string) {
+  if (mode === "signup") {
+    flipClass.value = "flip-card-first";
+    setTimeout(() => {
+      flipClass.value = "";
+    }, 800);
+  } else {
+    flipClass.value = "flip-card-flipped-first";
+    setTimeout(() => {
+      flipClass.value = "flip-card-flipped";
+    }, 800);
+  }
+}
 </script>
 
 <style>
