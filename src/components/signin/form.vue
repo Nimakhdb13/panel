@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, computed} from "vue";
+import { onMounted, ref } from "vue";
 import _rules from "../../assets/rules";
 import { AuthApi } from "../../api/users/auth";
 import cardSides from "@/assets/signinCardDetails";
@@ -63,39 +63,44 @@ const props = defineProps({
 });
 let detail = ref({}) as any;
 let formData = ref({
-  username:'',
-  password:'',
-  email:'',
-  phone:''
-})
+  username: "",
+  password: "",
+  email: "",
+  phone: "",
+});
 
 let loading = ref(false);
 
 function submit(type: string) {
   if (detail.value.isFormValid) {
     loading.value = true;
-    if(type == "SignUp")
-      new AuthApi().signup(formData.value).then((res)=>{
+    if (type == "SignUp")
+      new AuthApi().signup(formData.value).then((res) => {
         loading.value = false;
-      })
+      });
     else
-      new AuthApi().login(loginFormData(formData.value)).then((res)=>{
+      new AuthApi().login(loginFormData(formData.value)).then((res) => {
         loading.value = false;
-        })
-      }
+      });
+  }
 }
 
-function loginFormData(formData: any){
+function loginFormData(formData: any) {
   return {
     username: formData.username,
     password: formData.password,
-  }
+  };
 }
 
 function checkPhoneIsNumber(event: any) {
   if (event.target.type == "tel") {
     var charCode = event.which ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
+    if (
+      charCode > 31 &&
+      (charCode < 48 || charCode > 57) &&
+      charCode !== 46 &&
+      !(charCode < 106 && charCode > 95)
+    ) {
       event.preventDefault();
     } else {
       return true;
