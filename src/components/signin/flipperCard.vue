@@ -22,17 +22,10 @@ import SignInForm from "./form.vue";
 
 let flipClass = ref("");
 function flip(mode: string) {
-  if (mode === "signup") {
-    flipClass.value = "flip-card-first";
+    flipClass.value = mode == "signup" ? "flip-card-first" : "flip-card-flipped-first";
     setTimeout(() => {
-      flipClass.value = "";
+      flipClass.value = mode == "signup" ? "" : "flip-card-flipped";
     }, 800);
-  } else {
-    flipClass.value = "flip-card-flipped-first";
-    setTimeout(() => {
-      flipClass.value = "flip-card-flipped";
-    }, 800);
-  }
 }
 </script>
 
@@ -66,14 +59,7 @@ function flip(mode: string) {
   backface-visibility: hidden;
 }
 
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
 .flip-card-back {
-  background-color: dodgerblue;
-  color: white;
   transform: rotateY(180deg);
   display: none;
 }
