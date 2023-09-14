@@ -58,6 +58,7 @@ import { onMounted, ref } from "vue";
 import _rules from "../../assets/rules";
 import { AuthApi } from "../../api/users/auth";
 import cardSides from "@/assets/signinCardDetails";
+const emits = defineEmits(["submit"]);
 const props = defineProps({
   title: String,
 });
@@ -75,13 +76,27 @@ function submit(type: string) {
   if (detail.value.isFormValid) {
     loading.value = true;
     if (type == "SignUp")
-      new AuthApi().signup(formData.value).then((res) => {
-        loading.value = false;
-      });
+      new AuthApi()
+        .signup(formData.value)
+        .then((res) => {
+          loading.value = false;
+          emits("submit", res);
+        })
+        .catch((er) => {
+          loading.value = false;  
+          emits("submit", er.response.data.detail);
+        });
     else
-      new AuthApi().login(loginFormData(formData.value)).then((res) => {
-        loading.value = false;
-      });
+      new AuthApi()
+        .login(loginFormData(formData.value))
+        .then((res) => {
+          loading.value = false;
+          emits("submit", res);
+        })
+        .catch((er) => {
+          loading.value = false;
+          emits("submit", er.response.data.detail);
+        });
   }
 }
 
