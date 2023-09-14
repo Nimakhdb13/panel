@@ -1,5 +1,5 @@
 <template>
-  <div :class="$vuetify.display.mobile ? 'mt-16' : 'align-center f-h-p'" class="d-flex justify-center  f-w">
+  <div class="h-screen d-flex align-center justify-center  f-w">
     <flipperCard />
   </div>
 </template>
