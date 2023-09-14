@@ -45,7 +45,6 @@ let showAlert = ref(false);
 let response = ref({ type: "", text: "" });
 let flipClass = ref("");
 function submited(res: any, isSignup: boolean) {
-  console.log(res)
   response.value = {
     type: res.success ? "success" : "error",
     text: res.success
@@ -55,6 +54,7 @@ function submited(res: any, isSignup: boolean) {
   showAlert.value = true;
   setTimeout(() => {
     showAlert.value = false;
+    if (!isSignup && res.success) router.push("/dashboard");
   }, isSignup ? 2000 : 900);
 }
 function flip(mode: string) {
