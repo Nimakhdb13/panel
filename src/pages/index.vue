@@ -1,15 +1,11 @@
 <template>
   <div class="d-flex align-center justify-center f-h-p f-w">
-    <flipper-card></flipper-card>
+    <flipperCard />
   </div>
 </template>
 
-<script lang="ts">
-import FlipperCard from "../components/signin/flipperCard.vue";
-
-export default {
-  components: { FlipperCard },
-};
+<script lang="ts" setup>
+import flipperCard from '../components/signin/flipperCard.vue';
 </script>
 
 <style></style>
