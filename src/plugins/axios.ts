@@ -13,7 +13,6 @@ export class BaseApi {
       let config = {
         headers : {}
       } as AxiosRequestConfig
-      config = this.appendAuth(config)
       return this.api.get(url, config).then(undefined)
     }
 
@@ -21,16 +20,10 @@ export class BaseApi {
       let config = {
         headers : {}
       } as AxiosRequestConfig
-      config = this.appendAuth(config)
       console.log()
       return this.api.post(url, data, config).then(undefined)
     }
 
-    private appendAuth(config: AxiosRequestConfig){
-      if (!this.authorize) return config
-      const token = localStorage.getItem('token')
-      if(config.headers)
-        config.headers.Authorization = `Bearer ${token}`
-      return config
-    }
+
+
 }
