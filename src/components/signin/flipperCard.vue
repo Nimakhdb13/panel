@@ -28,7 +28,7 @@
       class="fix-b mb-10 w-20"
       closable
       v-if="showAlert"
-      :type="response.type"
+      :type="(response.type as any)"
       :value="false"
       elevation="10"
     >
