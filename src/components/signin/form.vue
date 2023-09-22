@@ -58,7 +58,10 @@ import { onMounted, ref } from "vue";
 import _rules from "../../assets/rules";
 import { AuthApi } from "../../api/users/auth";
 import cardSides from "@/assets/signinCardDetails";
-const emits = defineEmits(["submit"]);
+import router from "@/router";
+import { useAlertsStore } from "@/stores/alert";
+const emits = defineEmits(["flip"]);
+
 const props = defineProps({
   title: String,
 });
@@ -69,6 +72,7 @@ let formData = ref({
   email: "",
   phone: "",
 });
+let alertStore = useAlertsStore();
 
 let loading = ref(false);
 
@@ -80,24 +84,22 @@ function submit(type: string) {
         .signup(formData.value)
         .then((res) => {
           loading.value = false;
-          emits("submit", res);
+          alertStore.$patch({showTime: 2000, type: "success", message: "Signed Up successfully."})
+          alertStore.showAlert();
+          emits('flip');
         })
-        .catch((er) => {
-          loading.value = false;  
-          emits("submit", er.response.data.detail);
-        });
+        .catch(() => (loading.value = false));
     else
       new AuthApi()
         .login(loginFormData(formData.value))
         .then((res) => {
           loading.value = false;
-          localStorage.setItem('token',res.access_token)
-          emits("submit", res);
+          alertStore.$patch({showTime: 2000, type: "success", message: "Loged in successfully."})
+          alertStore.showAlert();
+          localStorage.setItem("token", res.access_token);
+          router.push("/dashboard");
         })
-        .catch((er) => {
-          loading.value = false;
-          emits("submit", er.response.data.detail);
-        });
+        .catch(() => (loading.value = false));
   }
 }
 
