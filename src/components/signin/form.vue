@@ -91,6 +91,7 @@ function submit(type: string) {
         .login(loginFormData(formData.value))
         .then((res) => {
           loading.value = false;
+          localStorage.setItem('token',res.access_token)
           emits("submit", res);
         })
         .catch((er) => {
