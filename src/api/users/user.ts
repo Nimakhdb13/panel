@@ -7,4 +7,8 @@ export class UserApi extends BaseApi {
     return response?.data
   }
 
+  async getAllUsers() {
+    const response = await this.get(this.baseUrl + "list")
+    return response?.data
+  }
 }
