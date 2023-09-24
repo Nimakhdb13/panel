@@ -7,7 +7,7 @@ export default {
   ],
   username: [
     (value: string) => {
-      if (value.split(" ").length > 1)
+      if (value.split(" ").length > 1 || /[^A-Za-z]/g.test(value))
         return "UserName must not include space.";
       if (!value) return "You must fill this field.";
       return true;
@@ -15,7 +15,7 @@ export default {
   ],
   password: [
     (value: string) => {
-      if (value.length < 4) return "Password must contain more than 8 letter.";
+      if (value.length < 8) return "Password must contain more than 8 letter.";
       return true;
     },
   ],
