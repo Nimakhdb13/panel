@@ -11,14 +11,14 @@ export default  [
           icon: "fa-solid fa-user",
         },
         {
-          title: "Email (optional)",
+          title: "Email",
           type: "text",
           name: 'email',
           rule: "email",
           icon: "fa-solid fa-envelope",
         },
         {
-          title: "Phone Number",
+          title: "Phone Number (optional)",
           type: "tel",
           name: 'phone',
           rule: "phone",

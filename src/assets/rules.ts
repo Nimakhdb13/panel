@@ -21,7 +21,8 @@ export default {
   ],
   phone: [
     (value: string) => {
-        if(value.length != 11 || value[0] != '0') return "Please enter a valid phone number."
+      if(value.length == 0 ) return true;
+        if(value.length != 11  || value[0] != '0') return "Please enter a valid phone number."
         return true;
     }
   ]
