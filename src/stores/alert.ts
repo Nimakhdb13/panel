@@ -4,7 +4,7 @@ export const useAlertsStore = defineStore("alerts", () => {
   let isShowing = ref(false);
   let message = ref("");
   let type = ref("");
-  let showTime = ref(1000);
+  let showTime = ref(3500);
   function showAlert() {
     isShowing.value = true;
     setTimeout(

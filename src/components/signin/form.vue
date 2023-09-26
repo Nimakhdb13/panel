@@ -87,7 +87,7 @@ function submit(type: string) {
         .signup(formData.value)
         .then((res) => {
           loading.value = false;
-          alertStore.$patch({showTime: 2000, type: "success", message: "Signed Up successfully."})
+          alertStore.$patch({type: "success", message: "Signed Up successfully."})
           alertStore.showAlert();
           emits('flip');
         })
@@ -97,7 +97,7 @@ function submit(type: string) {
         .login(loginFormData(formData.value))
         .then((res) => {
           loading.value = false;
-          alertStore.$patch({showTime: 2000, type: "success", message: "Loged in successfully."})
+          alertStore.$patch({type: "success", message: "Loged in successfully."})
           alertStore.showAlert();
           localStorage.setItem("token", res.access_token);
           router.push("/dashboard");
@@ -138,6 +138,14 @@ onMounted(() => {
 <style>
 .v-icon--size-default {
   font-size: 20px !important;
+}
+
+.v-messages{
+  font-size: 14px !important;
+}
+
+.v-messages__message {
+    line-height: 14px !important;
 }
 
 </style>
