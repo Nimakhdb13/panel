@@ -21,10 +21,17 @@ export default {
   ],
   phone: [
     (value: string) => {
-      if(value.length == 0 ) return true;
-        if(value.length != 11  || value[0] != '0') return "Please enter a valid phone number."
+      if (value.length == 0) return true;
+      if (value.length != 11 || value[0] != "0")
+        return "Please enter a valid phone number.";
+      return true;
+    },
+  ],
+  email: [
+    (value: string) => {
+      if (/^[a-zA-Z0-9._]+@[a-zA-Z0-9._]+[.]+[a-z]{2,4}/g.test(value))
         return true;
-    }
-  ]
+      else return "Email is not valid. It should be like example@mail.com";
+    },
+  ],
 };
-
