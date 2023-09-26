@@ -1,5 +1,5 @@
 <template>
-  <v-card-title class="bg-orange text-center">
+  <v-card-title class="text-primary-lighten-2 text-center">
     {{ title }}
   </v-card-title>
 
@@ -9,9 +9,11 @@
         v-for="field in detail.fields"
         :key="field.title"
         variant="outlined"
-        class="mx-4 my-3"
+        class="mx-4 py-1 rounded-lg text-texts"
         density="compact"
-        color="green"
+        clearable
+        base-color="primary-lighten-3"
+        color="primary-lighten-2"
         :prepend-inner-icon="field.icon"
         :append-inner-icon="
           field.title == 'Password'
@@ -31,22 +33,22 @@
       >
       </v-text-field>
       <div class="d-flex align-center justify-center">
-        <span class="text-caption mr-3">{{ detail.spanText }}</span>
+        <span class="text-caption mr-3 text-texts">{{ detail.spanText }}</span>
         <v-btn
           @click="$emit('flip')"
           variant="text"
           class="px-0"
-          color="orange"
+          color="primary-lighten-3"
           >{{ detail.btnText1 }}</v-btn
         >
       </div>
       <v-btn
-        class="fix-b"
+        class="fix-b rounded-0"
         :loading="loading"
         @click="submit(detail.title)"
         type="submit"
         block
-        color="success"
+        color="primary-lighten-2"
         >{{ detail.btnText2 }}</v-btn
       >
     </v-form>
@@ -64,6 +66,7 @@ const emits = defineEmits(["flip"]);
 
 const props = defineProps({
   title: String,
+  isSignup: Boolean,
 });
 let detail = ref({}) as any;
 let formData = ref({
@@ -127,7 +130,7 @@ function checkPhoneIsNumber(event: any) {
 }
 
 onMounted(() => {
-  if (props.title == "signup") detail.value = cardSides[0];
+  if (props.isSignup) detail.value = cardSides[0];
   else detail.value = cardSides[1];
 });
 </script>
@@ -136,4 +139,5 @@ onMounted(() => {
 .v-icon--size-default {
   font-size: 20px !important;
 }
+
 </style>
