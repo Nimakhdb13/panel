@@ -3,18 +3,34 @@
     <div class="flip-card" :class="flipClass">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <v-card class="bg-blue-lighte-5 elevation-8">
+          <v-card
+            :class="
+              $vuetify.theme.name == 'myCustomLightTheme'
+                ? 'bg-secondary'
+                : 'bg-secondary-darken-4'
+            "
+            class="rounded-0 elevation-8"
+          >
             <SignInForm
               @flip="flip('login')"
-              title="signup"
+              title="Join us"
+              :is-signup="true"
             />
           </v-card>
         </div>
 
-        <v-card class="flip-card-back">
+        <v-card
+          class="flip-card-back"
+          :class="
+            $vuetify.theme.name == 'myCustomLightTheme'
+              ? 'bg-secondary'
+              : 'bg-secondary-darken-4'
+          "
+        >
           <SignInForm
             @flip="flip('signup')"
-            title="login"
+            title="Welcome back"
+            :is-signup="false"
           />
         </v-card>
       </div>
