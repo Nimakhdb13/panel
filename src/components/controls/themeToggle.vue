@@ -1,9 +1,9 @@
 <template>
   <v-switch
     v-model="isDark"
-    class="toggle-btn"
     inset
     inline
+    hide-details
     density="compact"
     true-icon="fas fa-moon"
     false-icon="fas fa-sun"
@@ -23,7 +23,4 @@ function toggle() {
 </script>
 
 <style>
-.toggle-btn {
-  position: absolute !important;
-}
 </style>
