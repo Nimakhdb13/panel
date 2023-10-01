@@ -1,5 +1,13 @@
 <template>
-    <v-btn @click="logout()" color="success">logout</v-btn>
+  <v-tooltip location="bottom" text="Logout">
+    <template v-slot:activator="{ props }">
+      <v-btn
+        @click="logout()"
+        v-bind="props"
+        icon="fas fa-sign-out"
+      ></v-btn>
+    </template>
+  </v-tooltip>
 </template>
 <script lang="ts" setup>
 import router from "@/router";
