@@ -3,11 +3,7 @@
 }
 
 .f-h{
-    min-height: 100%;
-}
-
-.f-h-p{
-    height: 935px;
+    height: 100vh;
 }
 
 .w-20{
