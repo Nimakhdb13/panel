@@ -7,9 +7,9 @@ export const useAuthStore = defineStore("auth", () => {
     isLoggedIn.value = true;
     token.value = _token;
   }
-  function $reset() {
+  function reset() {
     isLoggedIn.value = false;
     token.value = "";
   }
-  return { isLoggedIn, token, login };
+  return { isLoggedIn, token, login, reset };
 });
