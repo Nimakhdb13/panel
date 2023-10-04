@@ -31,11 +31,13 @@
 import { UserApi } from "@/api/users/user";
 import { ref } from "vue";
 import userHeaders from "@/assets/headers/users";
+import { useJalaliDate } from "@/composibles/formatDates";
 let users = ref({} as any);
 let loaded = ref(false);
 new UserApi().getAllUsers().then((res) => {
   users.value = res;
   loaded.value = true;
+  console.log(useJalaliDate(users.value))
 });
 </script>
 
