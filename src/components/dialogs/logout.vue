@@ -9,7 +9,7 @@
         <v-card-text> Are you sure that you want to log out? </v-card-text>
 
         <v-card-actions class="d-flex justify-space-around">
-          <v-btn text="Cansel" @click="close"></v-btn>
+          <v-btn text="Cancel" @click="close"></v-btn>
           <v-btn text="logout" color="error" @click="logout"></v-btn>
         </v-card-actions>
       </v-card>
@@ -28,8 +28,9 @@ let alertStore = useAlertsStore();
 function logout() {
   alertStore.$patch({ type: "success", message: "Loged out successfully." });
   alertStore.showAlert();
-  authStore.$reset();
+  authStore.reset();
   localStorage.removeItem("token");
+  close();
   router.push("/");
 }
 function show() {
