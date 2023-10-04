@@ -62,6 +62,7 @@ import { AuthApi } from "../../api/users/auth";
 import cardSides from "@/assets/signinCardDetails";
 import router from "@/router";
 import { useAlertsStore } from "@/stores/alert";
+import { useAuthStore } from "@/stores/auth";
 const emits = defineEmits(["flip"]);
 
 const props = defineProps({
@@ -76,6 +77,7 @@ let formData = ref({
   phone: "",
 });
 let alertStore = useAlertsStore();
+let authStore = useAuthStore();
 
 let loading = ref(false);
 
@@ -87,9 +89,12 @@ function submit(type: string) {
         .signup(formData.value)
         .then((res) => {
           loading.value = false;
-          alertStore.$patch({type: "success", message: "Signed Up successfully."})
+          alertStore.$patch({
+            type: "success",
+            message: "Signed Up successfully.",
+          });
           alertStore.showAlert();
-          emits('flip');
+          emits("flip");
         })
         .catch(() => (loading.value = false));
     else
@@ -97,8 +102,12 @@ function submit(type: string) {
         .login(loginFormData(formData.value))
         .then((res) => {
           loading.value = false;
-          alertStore.$patch({type: "success", message: "Loged in successfully."})
+          alertStore.$patch({
+            type: "success",
+            message: "Loged in successfully.",
+          });
           alertStore.showAlert();
+          authStore.login(res.access_token);
           localStorage.setItem("token", res.access_token);
           router.push("/dashboard");
         })
@@ -140,12 +149,11 @@ onMounted(() => {
   font-size: 20px !important;
 }
 
-.v-messages{
+.v-messages {
   font-size: 14px !important;
 }
 
 .v-messages__message {
-    line-height: 14px !important;
+  line-height: 14px !important;
 }
-
 </style>
