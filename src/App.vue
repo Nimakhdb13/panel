@@ -8,7 +8,7 @@
           : 'index-container-dark'
       "
     >
-      <appBar class="app-bar"></appBar>
+      <app-bar class="app-bar"></app-bar>
       <template class="d-flex justify-center">
         <router-view></router-view>
         <alert />
