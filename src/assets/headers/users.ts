@@ -12,10 +12,6 @@ export default [
         value:"email"
     },
     {
-        text:"Role",
-        value:"role"
-    },
-    {
         text:"Create Date",
         value:"created_at"
     },

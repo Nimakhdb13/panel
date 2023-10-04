@@ -1,7 +1,12 @@
 <template>
   <v-row class="mt-5 justify-center">
     <div>
-      <my-table :headers="userHeaders" :items="users" :loaded="loaded"></my-table>
+      <my-table
+        :headers="userHeaders"
+        :items="users"
+        :loaded="loaded"
+        :actions="actions"
+      ></my-table>
     </div>
   </v-row>
 </template>
@@ -14,6 +19,14 @@ import { useJalaliDate } from "@/composibles/formatDates";
 import myTable from "../containers/myTable.vue";
 let users = ref({} as any);
 let loaded = ref(false);
+let actions = [
+  {
+    title: "role",
+    id: 0,
+    type: "select",
+    selections: ["admin", "user", "staff"],
+  },
+];
 new UserApi().getAllUsers().then((res) => {
   users.value = res;
   loaded.value = true;
