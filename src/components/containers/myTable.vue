@@ -2,20 +2,29 @@
   <v-table>
     <thead>
       <tr>
-        <th
-          width="200px"
-          class="text-center"
-          v-for="header in headers"
-          :key="header.value"
-        >
+        <th class="text-center" v-for="header in headers" :key="header.value">
           {{ header.text }}
+        </th>
+        <th class="text-center" v-for="action in actions" :key="action.id">
+          {{ action.title }}
         </th>
       </tr>
     </thead>
     <tbody v-if="loaded">
       <tr class="text-center" v-for="item in items" :key="item.name">
-        <td class="t" v-for="key in headers" :key="key.value">
+        <td v-for="key in headers" :key="key.value">
           {{ item[key.value] }}
+        </td>
+        <td class="d-flex align-center">
+          <div v-for="action in actions" :key="action.id">
+            <v-select
+              v-if="action.type == 'select'"
+              density="compact"
+              :items="action.selections"
+              v-model="item[action.title]"
+              hide-details
+            ></v-select>
+          </div>
         </td>
       </tr>
     </tbody>
@@ -27,10 +36,11 @@
 import { onMounted, ref } from "vue";
 
 const props = defineProps<{
-  headers?: any
-  items?: any
-  loaded?: boolean
-}>()
+  headers?: any;
+  items?: any;
+  loaded?: boolean;
+  actions?: any;
+}>();
 </script>
 
 <style></style>
