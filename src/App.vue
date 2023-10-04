@@ -8,9 +8,11 @@
           : 'index-container-dark'
       "
     >
-        <appBar class="app-bar"></appBar>
+      <appBar class="app-bar"></appBar>
+      <template class="d-flex justify-center">
         <router-view></router-view>
         <alert />
+      </template>
     </div>
   </v-app>
 </template>
@@ -39,7 +41,7 @@ useAuthStore().init();
     rgb(var(--v-theme-back-3)) 100%
   );
 }
-.app-bar{
+.app-bar {
   position: sticky !important;
   top: 0;
 }

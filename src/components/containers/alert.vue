@@ -2,7 +2,7 @@
   <v-fade-transition>
     <v-alert
       density="comfortable"
-      class="fix-b mb-10 centered"
+      class="fix-b mb-10"
       closable
       :class="$vuetify.display.mdAndUp ? ' w-20' : 'w-90'"
       v-if="alertStore.isShowing"
