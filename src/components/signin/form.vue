@@ -102,13 +102,13 @@ function submit(type: string) {
         .login(loginFormData(formData.value))
         .then((res) => {
           loading.value = false;
+          localStorage.setItem("token", res.access_token);
           alertStore.$patch({
             type: "success",
             message: "Loged in successfully.",
           });
           alertStore.showAlert();
           authStore.login(res.access_token);
-          localStorage.setItem("token", res.access_token);
           router.push("/dashboard");
         })
         .catch(() => (loading.value = false));
