@@ -8,11 +8,9 @@
           : 'index-container-dark'
       "
     >
-      <template class="d-flex justify-center">
-        <appBar></appBar>
+        <appBar class="app-bar"></appBar>
         <router-view></router-view>
         <alert />
-      </template>
     </div>
   </v-app>
 </template>
@@ -38,5 +36,9 @@ import appBar from "./components/containers/appBar.vue";
     rgb(var(--v-theme-back-2)) 49%,
     rgb(var(--v-theme-back-3)) 100%
   );
+}
+.app-bar{
+  position: sticky !important;
+  top: 0;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen d-flex align-center justify-center  f-w">
+  <div class="d-flex mt-16 align-center justify-center f-w">
     <flipperCard />
   </div>
 </template>
