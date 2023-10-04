@@ -18,6 +18,8 @@
 <script lang="ts" setup>
 import alert from "./components/containers/alert.vue";
 import appBar from "./components/containers/appBar.vue";
+import { useAuthStore } from "./stores/auth";
+useAuthStore().init();
 </script>
 
 <style>
