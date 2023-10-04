@@ -23,6 +23,7 @@
               :items="action.selections"
               v-model="item[action.title]"
               hide-details
+              :disabled="action.disabled(item)"
             ></v-select>
           </div>
         </td>

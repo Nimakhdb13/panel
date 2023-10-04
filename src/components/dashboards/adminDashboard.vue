@@ -24,6 +24,7 @@ let actions = [
     title: "role",
     id: 0,
     type: "select",
+    disabled: (user: any)=>{ return user.role == 'admin'},
     selections: ["admin", "user", "staff"],
   },
 ];
