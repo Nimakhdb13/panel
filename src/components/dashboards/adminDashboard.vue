@@ -37,12 +37,12 @@ let loaded = ref(false);
 new UserApi().getAllUsers().then((res) => {
   users.value = res;
   loaded.value = true;
-  console.log(useJalaliDate(users.value))
+  useJalaliDate(users.value);
 });
 </script>
 
 <style>
-.t{
+.t {
   max-width: 200px;
 }
 </style>

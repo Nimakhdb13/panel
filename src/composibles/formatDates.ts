@@ -2,7 +2,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 export function useJalaliDate(objectWithDate: any) {
   if (objectWithDate.length)
-    return objectWithDate.map((element: any) => {
+    objectWithDate.map((element: any) => {
       element.created_at = new Date(element.created_at).toLocaleDateString(
         "fa-IR-u-nu-latn"
       );
@@ -12,4 +12,5 @@ export function useJalaliDate(objectWithDate: any) {
       "fa-IR-u-nu-latn"
     );
   }
+  return objectWithDate
 }
