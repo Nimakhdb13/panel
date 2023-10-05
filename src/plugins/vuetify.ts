@@ -25,7 +25,7 @@ const myCustomLightTheme: ThemeDefinition = {
     "primary-lighten-4": "#58545B",
     secondary: "#ffffff",
     "secondary-darken-1": "#018786",
-    texts : 'c47676',
+    texts : 'ad5e5e',
     error: "#FF1744",
     info: "#2196F3",
     success: "#4CAF50",
