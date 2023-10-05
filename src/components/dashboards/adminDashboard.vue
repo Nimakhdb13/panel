@@ -2,6 +2,7 @@
   <v-row class="mt-5 justify-center">
     <div>
       <my-table
+        @action="action"
         :headers="userHeaders"
         :items="users"
         :loaded="loaded"
@@ -28,6 +29,9 @@ let actions = [
     selections: ["admin", "user", "staff"],
   },
 ];
+function action(title: string, newValue: any){
+  console.log(title, newValue)
+}
 new UserApi().getAllUsers().then((res) => {
   users.value = res;
   loaded.value = true;

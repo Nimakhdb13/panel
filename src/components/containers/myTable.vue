@@ -24,6 +24,9 @@
               v-model="item[action.title]"
               hide-details
               :disabled="action.disabled(item)"
+              @update:modelValue="
+                $emit('action', action.title, item[action.title])
+              "
             ></v-select>
           </div>
         </td>
