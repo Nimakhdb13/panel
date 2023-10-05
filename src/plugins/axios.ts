@@ -34,6 +34,17 @@ export class BaseApi {
       .catch(BaseApi.alertOnError);
   }
 
+  public patch(url: string, data: object) {
+    let config = {
+      headers: {},
+    } as AxiosRequestConfig;
+    config = this.appendAuth(config);
+    return this.api
+      .patch(url, data, config)
+      .then(undefined)
+      .catch(BaseApi.alertOnError);
+  }
+
   private appendAuth(config: AxiosRequestConfig) {
     if (!this.authorize) return config;
     const token = localStorage.getItem("token");
