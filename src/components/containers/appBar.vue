@@ -1,8 +1,15 @@
 <template>
   <v-app-bar class="px-2 bg-op-0" elevation="2">
-    <theme-toggle ></theme-toggle>
-    <v-spacer></v-spacer>   
-    <span v-if="authStore.userName" class="text-texts">hi {{ authStore.userName }}!</span>
+    <div class="d-flex">
+      <v-avatar class="mx-2" size="36px">
+        <v-img alt="Avatar" src="favicon.ico"></v-img>
+      </v-avatar>
+      <theme-toggle></theme-toggle>
+    </div>
+    <v-spacer></v-spacer>
+    <span v-if="authStore.userName" class="text-texts"
+      >hi {{ authStore.userName }}!</span
+    >
     <logout-btn v-if="authStore.isLoggedIn"></logout-btn>
   </v-app-bar>
 </template>
