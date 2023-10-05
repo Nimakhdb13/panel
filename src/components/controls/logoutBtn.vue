@@ -2,6 +2,7 @@
   <v-tooltip location="bottom" text="Logout">
     <template v-slot:activator="{ props }">
       <v-btn
+        class="text-texts"
         @click="openLogutDialog"
         v-bind="props"
         icon="fas fa-sign-out"
