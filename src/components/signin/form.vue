@@ -108,7 +108,7 @@ function submit(type: string) {
             message: "Loged in successfully.",
           });
           alertStore.showAlert();
-          authStore.login(res.access_token, res.role, res.username);
+          authStore.init();
           router.push("/dashboard");
         })
         .catch(() => (loading.value = false));

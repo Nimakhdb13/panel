@@ -8,13 +8,6 @@ export const useAuthStore = defineStore("auth", () => {
   let userName = ref("");
   let role = ref("");
 
-  function login(_token: string, _role: string, _username: string) {
-    isLoggedIn.value = true;
-    token.value = _token;
-    role.value = _role;
-    userName.value = _username;
-  }
-
   function reset() {
     isLoggedIn.value = false;
     token.value = "";
@@ -27,10 +20,10 @@ export const useAuthStore = defineStore("auth", () => {
     if (token.value) {
       isLoggedIn.value = true;
       new UserApi().getProfile().then((res) => {
-        userName.value = res.uesrname;
+        userName.value = res.username;
         role.value = res.role;
       });
     }
   }
-  return { isLoggedIn, token, login, reset, role, userName, init };
+  return { isLoggedIn, token, reset, role, userName, init };
 });
