@@ -5,7 +5,7 @@
         </v-card-title>
         <v-card-text>
             <v-btn class="mb-3" density="compact" color="success" append-icon="fa-light fa-plus">create task</v-btn>
-            <myTable :loaded="true" ></myTable>
+            <myTable :loaded="true" :headers="taskHeader"></myTable>
         </v-card-text>
     </v-card>    
 </template>
