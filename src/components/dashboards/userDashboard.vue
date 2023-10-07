@@ -1,5 +1,9 @@
-<template></template>
+<template>
+    <tasks></tasks>
+</template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import tasks from '../containers/tasks.vue';
+</script>
 
 <style></style>
