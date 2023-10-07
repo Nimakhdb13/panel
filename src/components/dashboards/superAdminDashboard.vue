@@ -25,12 +25,13 @@ let actions = [
     title: "role",
     id: 0,
     type: "select",
-    disabled: (user: any)=>{ return user.role == 'admin'},
-    selections: ["admin", "user", "staff"],
+    identifier: "username",
+    disabled: (user: any)=>{ return user.role == 'super_admin'},
+    selections: ["super_admin" ,"admin", "user", "staff"],
   },
 ];
-function action(title: string, newValue: any){
-  console.log(title, newValue)
+function action(title: string, identifier: any, newValue: any){
+  new UserApi().changeRole(identifier, newValue)
 }
 new UserApi().getAllUsers().then((res) => {
   users.value = res;

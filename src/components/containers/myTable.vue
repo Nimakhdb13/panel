@@ -28,7 +28,7 @@
               color="secondary-darken-1"
               :disabled="action.disabled(item)"
               @update:modelValue="
-                $emit('action', action.title, item[action.title])
+                $emit('action', action.title, item[action.identifier], item[action.title])
               "
             ></v-select>
           </div>
