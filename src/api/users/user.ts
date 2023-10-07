@@ -11,4 +11,9 @@ export class UserApi extends BaseApi {
     const response = await this.get(this.baseUrl + "list")
     return response?.data
   }
+
+  async changeRole(username: string, newRole: string ){
+    const response = await this.patch(this.baseUrl + "change-role",{username, new_role: newRole})
+    return response?.data
+  }
 }
