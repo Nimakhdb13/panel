@@ -19,7 +19,6 @@ import { ref } from 'vue';
 let newTaskDialogRef = ref(null);
 
 function openNewTaskDialog() {
-    console.log(newTaskDialogRef)
   if (newTaskDialogRef.value) (newTaskDialogRef.value as any).show();
 }
 </script>
